@@ -25,6 +25,17 @@ const config: ExpoConfig = {
     './plugins/withBundleCli',
     'expo-dev-client',
     [
+      // Smaller release builds: strip unused code and resources, and compress native libraries.
+      'expo-build-properties',
+      {
+        android: {
+          enableMinifyInReleaseBuilds: true,
+          enableShrinkResourcesInReleaseBuilds: true,
+          useLegacyPackaging: true,
+        },
+      },
+    ],
+    [
       'expo-splash-screen',
       {
         image: './assets/splash-icon.png',
