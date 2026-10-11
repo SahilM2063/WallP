@@ -1,0 +1,17 @@
+node_modules/
+.expo/
+dist/
+web-build/
+*.tsbuildinfo
+*.log
+.env
+.env.*
+!.env.example
+apps/mobile/android/
+apps/mobile/ios/
+artifacts/
+.native-build/
+.cxx/
+build/
+.DS_Store
+client_secret_*.json

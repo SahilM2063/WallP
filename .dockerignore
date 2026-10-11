@@ -1,0 +1,13 @@
+**/node_modules
+**/dist
+**/.env
+**/.env.*
+.git
+.cxx
+.native-build
+.claude
+artifacts
+wallpapers
+docs
+apps/mobile/*
+!apps/mobile/package.json

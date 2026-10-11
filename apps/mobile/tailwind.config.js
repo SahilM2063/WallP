@@ -1,0 +1,1 @@
+module.exports = { content: ['./App.tsx', './src/**/*.{ts,tsx}'], presets: [require('nativewind/preset')], theme: { extend: { fontFamily: { heading: ['Figtree_600SemiBold'], body: ['Figtree_400Regular'] } } }, plugins: [] };
