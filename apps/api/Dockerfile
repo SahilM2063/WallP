@@ -16,7 +16,8 @@ COPY packages/shared packages/shared
 COPY apps/api apps/api
 
 WORKDIR /app/apps/api
-ENV PORT=4000 HOST=0.0.0.0
+# Containers are deployed behind a reverse proxy (Coolify's Traefik or Caddy).
+ENV PORT=4000 HOST=0.0.0.0 TRUST_PROXY=true
 EXPOSE 4000
 HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
   CMD node -e "fetch('http://127.0.0.1:'+process.env.PORT+'/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"

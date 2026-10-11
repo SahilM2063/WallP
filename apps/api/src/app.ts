@@ -29,6 +29,9 @@ export interface Dependencies {
   adminEmail: string;
   adminSub?: string;
   corsOrigins?: string[];
+  // Set when the API sits behind a reverse proxy, so rate limits see each caller's own
+  // address (from X-Forwarded-For) instead of the proxy's.
+  trustProxy?: boolean;
   logger?: boolean;
 }
 type Account = User & { googleSub: string };
@@ -45,6 +48,7 @@ export async function buildApp(deps: Dependencies) {
   const app = Fastify({
     logger: deps.logger ? { redact: ['req.headers.authorization', 'req.body.idToken'] } : false,
     bodyLimit: MAX_BYTES + 64_000,
+    trustProxy: deps.trustProxy || false,
   });
   app.decorateRequest('account', null);
   await app.register(cors, { origin: deps.corsOrigins || [] });

@@ -32,6 +32,7 @@ const app = await buildApp({
   adminSub: process.env.ADMIN_GOOGLE_SUB,
   corsOrigins: (process.env.CORS_ORIGINS || '').split(',').filter(Boolean),
   logger: true,
+  trustProxy: process.env.TRUST_PROXY === 'true',
   verifyGoogle: async (idToken) => {
     const ticket = await google.verifyIdToken({
       idToken,
